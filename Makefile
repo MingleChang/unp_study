@@ -1,4 +1,4 @@
-CC = gcc
+dayCC = gcc
 INC = -IUtils
 SRC_PATH = Utils
 
