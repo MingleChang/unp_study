@@ -1,8 +1,8 @@
 CC = gcc
-INC = -I../unp
 SRC_PATH = ../unp
+INC = -I$(SRC_PATH)
 
-UNP_STATIC_FILE = -L$(SRC_PATH) -lunp
+STATIC_FILE = -L$(SRC_PATH) -lunp
 
 vpath %.c $(SRC_PATH)
 
@@ -15,7 +15,7 @@ all : $(objects:%.o=%)
 
 $(targets) : % : %.o
 	@echo "\n"$< "=>" $@ 
-	$(CC) -o $@ $< $(UNP_STATIC_FILE)
+	$(CC) -o $@ $< $(STATIC_FILE)
 
 $(objects) : %.o : %.c
 	@echo "\n"$< "=>" $@ 
