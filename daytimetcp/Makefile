@@ -1,4 +1,4 @@
-dayCC = gcc
+CC = gcc
 INC = -I../unp
 SRC_PATH = ../unp
 
