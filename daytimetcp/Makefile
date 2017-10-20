@@ -6,11 +6,11 @@ STATIC_FILE = -L$(SRC_PATH) -lunp
 
 vpath %.c $(SRC_PATH)
 
-objects = client.o clientv6.o server.o
+objects = client.o clientv6.o server.o byteorder.o
 targets = $(objects:%.o=%)
 
 .PHONY : all
-all : $(objects:%.o=%)
+all : $(targets)
 	@echo "\nCompleted!\n"
 
 $(targets) : % : %.o
