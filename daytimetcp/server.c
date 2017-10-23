@@ -20,7 +20,11 @@ int main(int argc, char const *argv[])
 
 	
 	for (;;) {
-		connfd = Accept(listenfd, (SA *)NULL, NULL);
+		socklen_t len;
+		struct sockaddr_in cliaddr;
+		connfd = Accept(listenfd, (SA *)&cliaddr, &len);
+		getpeername(connfd, (SA *)&cliaddr, &len);
+		printf("connection from %s, port %d\n", inet_ntop(AF_INET, &cliaddr.sin_addr, buff, sizeof(buff)), ntohs(cliaddr.sin_port));
 		ticks = time(NULL);
 		snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
 		Write(connfd, buff, strlen(buff));
