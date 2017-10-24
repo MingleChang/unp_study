@@ -6,7 +6,7 @@ STATIC_FILE = -L$(SRC_PATH) -lunp
 
 vpath %.c $(SRC_PATH)
 
-objects = server01.o client01.o
+objects = server01.o client01.o server04.o client04.o
 targets = $(objects:%.o=%)
 
 .PHONY : all
