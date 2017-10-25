@@ -28,6 +28,5 @@ int main(int argc, char const *argv[]) {
 	}
 	str_cli(stdin, sockfd[0]);
 
-
 	return 0;
 }
