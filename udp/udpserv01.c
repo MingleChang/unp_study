@@ -1,14 +1,31 @@
 #include "unp.h"
 
+// void dg_echo(int sockfd, SA *pcliaddr, socklen_t clilen) {
+// 	int n;
+// 	socklen_t len;
+// 	char msg[MAXLINE];
+// 	for (;;) {
+// 		len = clilen;
+// 		n = Recvfrom(sockfd, msg, MAXLINE, 0, pcliaddr, &len);
+// 		Sendto(sockfd, msg, n, 0, pcliaddr, len);
+// 	}
+// }
+
+static void recvfrom_int(int);
+static int count;
 void dg_echo(int sockfd, SA *pcliaddr, socklen_t clilen) {
-	int n;
 	socklen_t len;
 	char msg[MAXLINE];
+	Signal(SIGINT, recvfrom_int);
 	for (;;) {
 		len = clilen;
-		n = Recvfrom(sockfd, msg, MAXLINE, 0, pcliaddr, &len);
-		Sendto(sockfd, msg, n, 0, pcliaddr, len);
+		Recvfrom(sockfd, msg, MAXLINE, 0, pcliaddr, &len);
+		count ++;
 	}
+}
+static void recvfrom_int(int signo) {
+	printf("\nreceived %d dategrams\n", count);
+	exit(0);
 }
 
 int main(int argc, char const *argv[]) {

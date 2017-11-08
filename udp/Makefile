@@ -6,7 +6,7 @@ STATIC_FILE = -L$(SRC_PATH) -lunp
 
 vpath %.c $(SRC_PATH)
 
-objects = udpserv01.o udpcli01.o
+objects = udpserv01.o udpcli01.o udpcli09.o udpservselect01.o
 targets = $(objects:%.o=%)
 
 .PHONY : all
