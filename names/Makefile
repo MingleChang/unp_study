@@ -6,7 +6,7 @@ STATIC_FILE = -L$(SRC_PATH) -lunp
 
 vpath %.c $(SRC_PATH)
 
-objects = hostent.o
+objects = hostent.o daytimetcpcli1.o
 targets = $(objects:%.o=%)
 
 .PHONY : all
