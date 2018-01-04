@@ -14,7 +14,7 @@ int main(int argc, char const *argv[]) {
 
 	bzero(&addr1, sizeof(addr1));
 	addr1.sun_family = AF_LOCAL;
-	strncpy(addr1, sun_path, argv[1], sizeof(addr1.sun_path) - 1);
+	strncpy(addr1.sun_path, argv[1], sizeof(addr1.sun_path) - 1);
 	Bind(sockfd, (SA *)&addr1, SUN_LEN(&addr1));
 
 	len = sizeof(addr2);
