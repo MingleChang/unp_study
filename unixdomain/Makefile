@@ -12,6 +12,7 @@ targets = $(objects:%.o=%)
 .PHONY : all
 all : $(targets)
 	@echo "\nCompleted!\n"
+	-rm $(objects)
 
 $(targets) : % : %.o
 	@echo "\n"$< "=>" $@
@@ -23,4 +24,4 @@ $(objects) : %.o : %.c
 
 .PHONY : clean
 clean :
-		-rm $(objects:%.o=%) $(objects)
+		-rm $(objects:%.o=%)
