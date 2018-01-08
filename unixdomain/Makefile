@@ -6,7 +6,7 @@ STATIC_FILE = -L$(SRC_PATH) -lunp
 
 vpath %.c $(SRC_PATH)
 
-objects = unixbind.o unixstrserv01.o unixstrcli01.o unixdgserv01.o unixdgcli01.o mycat.o openfile.o
+objects = unixbind.o unixstrserv01.o unixstrcli01.o unixdgserv01.o unixdgcli01.o mycat.o openfile.o unixstrserv02.o
 targets = $(objects:%.o=%)
 
 .PHONY : all
@@ -24,4 +24,4 @@ $(objects) : %.o : %.c
 
 .PHONY : clean
 clean :
-		-rm $(objects:%.o=%)
+		-rm $(objects:%.o=%) $(objects)
