@@ -31,7 +31,7 @@ struct if_nameindex *if_nameindex(void) {
           namptr -= sdl->sdl_nlen +1;
           strncpy(namptr, &sdl->sdl_data[0], sdl->sdl_nlen);
           namptr[sdl->sdl_nlen] = 0;
-          ifptr->if_name;
+          ifptr->if_name = namptr;
           ifptr->if_index = sdl->sdl_index;
           ifptr++;
         }
