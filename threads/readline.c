@@ -58,4 +58,6 @@ ssize_t readline(int fd, void *vptr, size_t maxlen) {
       return -1;
     }
   }
+  *ptr = 0;
+  return n;
 }
