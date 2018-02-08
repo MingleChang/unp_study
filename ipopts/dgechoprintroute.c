@@ -27,5 +27,7 @@ void dg_echo(int sockfd, SA *pcliaddr, socklen_t clilen) {
         Inet6_rth_reverse(CMSG_DATA(cmsg), CMSG_DATA(cmsg));
       }
     }
+    iov[0].iov_len = n;
+    Sendmsg(sockfd, &msg, 0);
   }
 }
