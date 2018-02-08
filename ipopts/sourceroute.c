@@ -6,7 +6,7 @@ static u_char *optr;
 static u_char *lenptr;
 static int ocnt;
 
-u_char *inet_strcrt_init(int type) {
+u_char *inet_srcrt_init(int type) {
   optr = Malloc(44);
   bzero(optr, 44);
   ocnt = 0;

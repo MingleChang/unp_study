@@ -37,7 +37,7 @@ int main(int argc, char const *argv[]) {
   if (optind != argc - 1) {
     err_quit("missing <hostname>");
   }
-  ai = Host_serv(argv[optind]m SERV_PORT_STR, AF_INET, SOCK_STREAM);
+  ai = Host_serv(argv[optind], SERV_PORT_STR, AF_INET, SOCK_STREAM);
   sockfd = Socket(ai->ai_family, ai->ai_socktype, ai->ai_protocol);
   if (ptr) {
     len = inet_srcrt_add(argv[optind]);
