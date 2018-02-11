@@ -7,7 +7,7 @@ struct proto proto_v6 = {proc_v6, send_v6, NULL, NULL, NULL, 0, IPPROTO_ICMPV6};
 
 int datalen = 56;
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char **argv) {
   int c;
   struct addrinfo *ai;
   char *h;

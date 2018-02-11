@@ -12,7 +12,7 @@ void proc_v4(char *ptr, ssize_t len, struct msghdr *msg, struct timeval *tvrecv)
     return;
   }
   icmp = (struct icmp *)(ptr + hlenl);
-  if ((icmp = len - hlenl) < 8) {
+  if ((icmplen = len - hlenl) < 8) {
     return;
   }
   if (icmp->icmp_type == ICMP_ECHOREPLY) {
