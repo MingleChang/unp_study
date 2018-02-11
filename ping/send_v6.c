@@ -9,5 +9,9 @@ void send_v6(void) {
   icmp6->icmp6_code = 0;
   icmp6->icmp6_id = pid;
   icmp6->icmp6_seq = nsent++;
+  memset((icmp6 + 1), 0xa5, datalen);
+  Gettimeofday((struct timeval *)(icmp6 + 1), NULL);
+  len = 8 + datalen;
+  Sendto(sockfd, sendbuf, len, 0, pr->sasend, pr->salen);
 #endif
 }
