@@ -12,7 +12,7 @@ void init_v6(void) {
 #ifdef IPV6_RECVHOPLIMIT
   setsockopt(sockfd, IPPROTO_IPV6, IPV6_RECVHOPLIMIT, &on, sizeof(on));
 #else
-  setsockopt(sockfd, IPPROTO_IPV6, IPV6_HOPLIMIT, &on, sizeof(on));
+  // setsockopt(sockfd, IPPROTO_IPV6, IPV6_HOPLIMIT, &on, sizeof(on));
 #endif
 #endif
 }

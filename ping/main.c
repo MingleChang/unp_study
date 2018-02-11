@@ -34,7 +34,7 @@ int main(int argc, char const *argv[]) {
   if (ai->ai_family == AF_INET) {
     pr = &proto_v4;
   }
-#ifdef
+#ifdef IPV6
   else if (ai->ai_family == AF_INET6) {
     pr = &proto_v6;
     if (IN6_IS_ADDR_V4MAPPED(&(((struct sockaddr_in6 *)ai->ai_addr)->sin6_addr))) {

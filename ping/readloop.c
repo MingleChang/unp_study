@@ -9,8 +9,8 @@ void readloop(void) {
   ssize_t n;
   struct timeval tval;
 
-  sockfd = Socket(ptr->sasend->sa_family, SOCK_RAW, pr->icmpproto);
-  setuid(getudi());
+  sockfd = Socket(pr->sasend->sa_family, SOCK_RAW, pr->icmpproto);
+  setuid(getuid());
   if (pr->finit) {
     (*pr->finit)();
   }
@@ -29,7 +29,7 @@ void readloop(void) {
     msg.msg_controllen = sizeof(controlbuf);
     n = recvmsg(sockfd, &msg, 0);
     if (n < 0) {
-      if (errno = EINTR) {
+      if (errno == EINTR) {
         continue;
       }else {
         err_sys("recvmsg error");
