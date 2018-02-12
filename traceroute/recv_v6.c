@@ -41,7 +41,7 @@ int recv_v6(int seq, struct timeval *tv) {
         break;
       }
     }else if (icmp6->icmp6_type == ICMP6_DST_UNREACH) {
-      if (icmp6len < 8 + sizeof(struct ip6ip6_hdr) + 4) {
+      if (icmp6len < 8 + sizeof(struct ip6_hdr) + 4) {
         continue;
       }
       hip6 = (struct ip6_hdr *)(recvbuf + 8);

@@ -10,7 +10,7 @@ int max_ttl = 30;
 int nprobes = 3;
 u_short dport = 32768 + 666;
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char **argv) {
   int c;
   struct addrinfo *ai;
   char *h;

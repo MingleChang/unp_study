@@ -24,7 +24,7 @@ void traceloop(void) {
   sig_alrm(SIGALRM);
   seq = 0;
   done = 0;
-  for (ttl = 1; ttl <= maxttl && done == 0; ttl++) {
+  for (ttl = 1; ttl <= max_ttl && done == 0; ttl++) {
     Setsockopt(sendfd, pr->ttllevel, pr->ttloptname, &ttl, sizeof(int));
     bzero(pr->salast, pr->salen);
     printf("%2d ", ttl);
@@ -51,7 +51,7 @@ void traceloop(void) {
         tv_sub(&tvrecv, &rec->rec_tv);
         rtt = tvrecv.tv_sec * 1000.0 + tvrecv.tv_usec / 1000.0;
         printf("  %.3f ms", rtt);
-        if (icmpcode == -1) {
+        if (code == -1) {
           done++;
         }else if (code >= 0) {
           printf(" (ICMP %s)", (*pr->icmpcode)(code));
