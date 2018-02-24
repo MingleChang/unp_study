@@ -31,6 +31,7 @@ int main(int argc, char *argv[]) {
     if ((childpid = Fork()) == 0) {
       Close(listenfd);
       web_child(connfd);
+      Close(connfd);
       exit(0);
     }
     Close(connfd);
