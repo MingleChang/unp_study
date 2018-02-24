@@ -8,12 +8,14 @@ vpath %.c $(SRC_PATH)
 
 clientObjects = client.o
 serv01Objects = serv01.o pr_cpu_time.o web_child.o sig_chld_waitpid.o
+serv02Objects = serv02.o pr_cpu_time.o web_child.o sig_chld_waitpid.o child02.o
 
 clientTarget = client
 serv01Target = serv01
+serv02Target = serv02
 
-objects = $(clientObjects) $(serv01Objects)
-targets = $(clientTarget) $(serv01Target)
+objects = $(clientObjects) $(serv01Objects) $(serv02Objects)
+targets = $(clientTarget) $(serv01Target) $(serv02Target)
 
 .PHONY : all
 all : $(targets)
@@ -24,6 +26,9 @@ $(clientTarget) : $(clientObjects)
 
 $(serv01Target) : $(serv01Objects)
 	$(CC) -o  $(serv01Target) $(serv01Objects) $(STATIC_FILE)
+
+$(serv02Target) : $(serv02Objects)
+	$(CC) -o  $(serv02Target) $(serv02Objects) $(STATIC_FILE)
 
 $(objects) : %.o : %.c
 	@echo "\n"$< "=>" $@
