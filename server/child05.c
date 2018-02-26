@@ -20,3 +20,24 @@ pid_t child_make(int i, int listenfd, int addrlen) {
   Close(listenfd);
   child_main(i, listen, addrlen);
 }
+
+void child_main(int i, int listenfd, int addrlen) {
+  char c;
+  int connfd;
+  ssize_t n;
+  void web_child(int);
+
+  printf("child %ld starting\n", (long)getpid());
+  for (;;) {
+    if ((n = Read_fd(STDERR_FILENO, &c, 1, &connfd)) == 0) {
+      err_quit("read_fd returned 0");
+    }
+    if (connfd < 0) {
+      err_quit("no descriptor from read_fd");
+    }
+    web_child(connfd);
+    Close(connfd);
+
+    Write(STDERR_FILENO, "", 1);
+  }
+}
